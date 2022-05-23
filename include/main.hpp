@@ -4,11 +4,11 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
-class Application
+class Renderer3D
 {
 public:
-    Application(unsigned int width, unsigned int height, const char *name);
-    ~Application();
+    Renderer3D(unsigned int width, unsigned int height, const char *name);
+    ~Renderer3D();
 
     void run();
     void processEvent();

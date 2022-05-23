@@ -53,8 +53,8 @@ struct objects
     unsigned int vao, vbo, ebo;
 };
 
-//Application constructor
-Application::Application(unsigned int width, unsigned int height, const char *title) : m_width(width), m_height(height), m_title(title)
+//Renderer3D constructor
+Renderer3D::Renderer3D(unsigned int width, unsigned int height, const char *title) : m_width(width), m_height(height), m_title(title)
 {
     INIT::glfw();
     //create window
@@ -72,13 +72,13 @@ Application::Application(unsigned int width, unsigned int height, const char *ti
     INIT::Enable();
 }
 
-//Application destructor: Only needs to terminate glfw;
-Application::~Application()
+//Renderer3D destructor: Only needs to terminate glfw;
+Renderer3D::~Renderer3D()
 {
     INIT::terminateglfw();
 }
 
-void Application::run() {
+void Renderer3D::run() {
     // ****************************** Square Start ******************************
     float square_vertices[] = {
             -1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
@@ -240,13 +240,13 @@ void Application::run() {
     }
 }
 
-void Application::processEvent()
+void Renderer3D::processEvent()
 {
     if ( glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS )
         glfwSetWindowShouldClose(m_window, GL_TRUE);
-    if ( glfwGetKey(m_window, GLFW_KEY_Z) == GLFW_PRESS )
+    if ( glfwGetKey(m_window, GLFW_KEY_M) == GLFW_PRESS )
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    if ( glfwGetKey(m_window, GLFW_KEY_X) == GLFW_PRESS )
+    if ( glfwGetKey(m_window, GLFW_KEY_N) == GLFW_PRESS )
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     if ( glfwGetKey(m_window, GLFW_KEY_D) == GLFW_PRESS )
         camera.ProcessKeyboard(RIGHT, deltaTime);
@@ -269,7 +269,7 @@ void Application::processEvent()
 }
 int main()
 {
-    Application Renderer3D(1920, 1024, "3DRenderer");
+    Renderer3D Renderer3D(1920, 1024, "3DRenderer");
     Renderer3D.run();
     return 0;
 }
